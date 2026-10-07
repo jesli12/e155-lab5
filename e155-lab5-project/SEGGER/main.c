@@ -40,7 +40,7 @@ int main(void) {
     // Initialize timer
     RCC->APB1ENR1 |= (1 << 0); // TIM2EN
     initTIM(TIMER);
-    set_ARR(TIMER, 10000); // start timer, ARR of 10000 
+    set_ARR(TIMER, (10000-1)); // start timer, ARR of 10000 
     // ************************************************ JESSSICA COME BAC ******************************
 
     // 1. Enable SYSCFG clock domain in RCC
@@ -92,7 +92,7 @@ int main(void) {
 
 // EXTI lines 5-9 share this handler
 void EXTI9_5_IRQHandler(void){ //PIN A triggered
-    // Check that the button was what triggered our interrupt
+    // check for specific interrupt flag
     // if (EXTI->PR1 & (1 << gpioPinOffset(PIN_A))){
 
     EXTI->PR1 = (1 << gpioPinOffset(PIN_A));
@@ -118,7 +118,7 @@ void EXTI9_5_IRQHandler(void){ //PIN A triggered
 }
 // EXTI lines 15-10 share this handler
 void EXTI15_10_IRQHandler(void){ // PIN B triggered
-    // Check that the button was what triggered our interrupt
+    // Check for specific interrupt flag
     // if (EXTI->PR1 & (1 << gpioPinOffset(PIN_B))){
 
     EXTI->PR1 = (1 << gpioPinOffset(PIN_B));
