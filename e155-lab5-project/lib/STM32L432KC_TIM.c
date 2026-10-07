@@ -5,15 +5,23 @@
 #include "STM32L432KC_RCC.h"
 
 void initTIM(TIM_TypeDef * TIMx){
-  // Set prescaler to give 1 ms time base
-  uint32_t psc_div = (uint32_t) ((SystemCoreClock/1e3)); // 80 MHz/ 1,000 = 80,000 hz
+  // Set prescaler to give 0.1 ms time base
+  uint32_t psc_div = (uint32_t) ((SystemCoreClock/1e4)); // 80 MHz/ 10,000 = 8,000 
 
   // Set prescaler division factor
-  TIMx->PSC = (psc_div - 1);
+  TIMx->PSC = (psc_div - 1); //7999
   // Generate an update event to update prescaler value
   TIMx->EGR |= 1;
   // Enable counter
   TIMx->CR1 |= 1; // Set CEN = 1
+}
+
+void set_ARR(TIM_TypeDef * TIMx, uint32_t ARR){
+  TIMx->ARR = ARR;// Set timer max count
+  TIMx->EGR |= 1;     // Force update
+  TIMx->SR &= ~(0x1); // Clear UIF
+  TIMx->CNT = 0;      // Reset count
+
 }
 
 void delay_millis(TIM_TypeDef * TIMx, uint32_t ms){

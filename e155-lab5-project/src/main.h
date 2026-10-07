@@ -13,8 +13,8 @@
 // Custom defines
 ///////////////////////////////////////////////////////////////////////////////
 
-#define PIN_8 PA8
-#define PIN_10 PA10
+#define PIN_A PA8
+#define PIN_B PA10
 #define TIMER TIM2
 
 #define CW 0
