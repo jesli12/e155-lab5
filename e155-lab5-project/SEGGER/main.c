@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include "stm32l432xx.h"
 
+#include "STM32L432KC_GPIO.h"
+
 // define variables
 volatile int direction;
 volatile float speed; // revolutions per second
