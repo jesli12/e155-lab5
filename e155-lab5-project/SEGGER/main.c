@@ -80,7 +80,7 @@ int main(void) {
             TIMER->SR &= ~(1<<0); // reset update flag (UIF)
             TIMER->CNT = 0; // reset timer count, not needed cuz ARR has been reached
 
-            speed = trigger_snapshot/(4.0f*408.0f); // floating point division
+            speed = trigger_snapshot/(4.0f*408.0f); // floating point division  //408 or 120
             // print results, CW is 0, CCW is 1
             printf("Direction [cw=0, ccw=1]: %d\n", direction);
             printf("Speed [rev/s]: %f\n", speed);
