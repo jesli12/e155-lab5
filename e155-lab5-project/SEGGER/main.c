@@ -40,8 +40,7 @@ int main(void) {
     // Initialize timer
     RCC->APB1ENR1 |= (1 << 0); // TIM2EN
     initTIM(TIMER);
-    set_ARR(TIMER, (10000-1)); // start timer, ARR of 10000 
-    // ************************************************ JESSSICA COME BAC ******************************
+    set_ARR(TIMER, (10000-1)); // start timer, ARR of 10000-1
 
     // 1. Enable SYSCFG clock domain in RCC
     RCC->APB2ENR |= (1 << 0); // SYSCFGEN
